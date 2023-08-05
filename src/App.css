@@ -1,8 +1,11 @@
-/* .App {
-  margin: 0;
+.App {
   padding: 0;
-  background-color: #333;
-} */
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+}
+
 
 /* .App-logo {
   height: 40vmin;

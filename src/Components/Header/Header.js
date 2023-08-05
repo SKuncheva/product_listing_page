@@ -1,51 +1,62 @@
-import { useState } from "react";
+import { useContext } from "react";
 import style from "./Header.module.css";
-import { Catalog } from "../Catalog/Catalog";
-import img from "./image/Trend.jpg";
+// import { Catalog } from "../Catalog/Catalog";
+import img from "./image/sneaker.png";
+import { GenderContext } from "../Context/Context";
 
 export const Header = () => {
-  const [defaultGender, setDefaultGender] = useState("women");
+  const { currentGender } = useContext(GenderContext);
 
   const clickHandlerGender = (e) => {
     e.preventDefault();
     const valueButton = e.target.value;
-    setDefaultGender(valueButton);
+    currentGender(valueButton);
   };
 
   return (
     <>
-      <div className={style.container}>
-        <div className={style.containerBtn}>
-          <button
-            value="women"
-            name="gender"
-            onClick={clickHandlerGender}
-            className={style.btn}
-          >
-            Women
-          </button>
+      <header >
+        <div className={style.container}>
+          <div className={style.containerBtn}>
+            <button
+              value="women"
+              name="gender"
+              onClick={clickHandlerGender}
+              className={style.btn}
+            >
+              Women
+            </button>
 
-          <button
-            value="men"
-            name="gender"
-            onClick={clickHandlerGender}
-            className={style.btn}
-          >
-            Men
-          </button>
-        </div>
+            <button
+              value="men"
+              name="gender"
+              onClick={clickHandlerGender}
+              className={style.btn}
+            >
+              Men
+            </button>
+          </div>
 
-        <div className={style.logo}>
-          <span className={style.logoName}>Fashion Shoes</span>
+          <div className={style.logo}>
+            <span className={style.logoName}>Sneakers</span>
+          </div>
+          <div className={style.cart}>
+            <i className="fas fa-shopping-cart"></i>
+          </div>
         </div>
-        <div className="Cart">
-          <i className="fas fa-shopping-cart"></i>
+        <div className={style.elementsHeader}>
+          <div className={style.elText}>
+            <p className={style.text}>
+              Effortlessly combine the best of function and fashion for
+              greatness in every step
+            </p>
+          </div>
+          <div className={style.elimg}>
+            <img src={img} alt="sneaker" className={style.imgHeader} />
+          </div>
         </div>
-      </div>
-      <div>
-        <img src={img} alt="trend" className={style.img} />
-      </div>
-      <Catalog gender={defaultGender} />
+        {/* <Catalog gender={defaultGender} /> */}
+      </header>
     </>
   );
 };

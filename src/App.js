@@ -1,19 +1,20 @@
 import "./App.css";
 
 import { Header } from "./Components/Header/Header";
-import { Catalog } from "./Components/Catalog/Catalog";
 import { Footer } from "./Components/Footer/Footer";
-
-
+import { GenderProvider } from "./Components/Context/Context";
+import { Catalog } from "./Components/Catalog/Catalog";
 
 function App() {
-
   return (
     <>
-      <Header/>
-      <Catalog/>
-      <Footer/>
-
+      <GenderProvider>
+        <Header />
+        <main>
+          <Catalog />
+        </main>
+        <Footer />
+      </GenderProvider>
     </>
   );
 }
