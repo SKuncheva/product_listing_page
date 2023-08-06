@@ -72,7 +72,7 @@ export const Catalog = () => {
         </header>
         {/* ........................................Filter................................................. */}
         <aside className={style.filter}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className={style.filterForm}>
             {/* ................Brand................... */}
             <div>
               <label>

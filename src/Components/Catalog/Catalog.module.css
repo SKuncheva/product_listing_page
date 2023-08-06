@@ -8,8 +8,6 @@
     "filter product product product"
     "filter product product product";
   gap: 15px;
-  /* min-height: auto; */
-
 }
 
 /* ---------------------header---------------- */
@@ -230,4 +228,98 @@
 .sortOptions {
   margin-left: 10px;
   display: inline;
+}
+
+/* --------------------------respons---------------------- */
+@media screen and (max-width: 1440px) {
+  .header {
+    width: 92%;
+    margin-top: 336px;
+    padding: 23px 80px;
+  }
+.product{
+  margin-left: 75px;
+}
+  .container {
+    grid-template-columns: 300px 300px 300px;
+  }
+  .filter{
+    margin-top: 55px;
+    margin-left: 55px;
+  }
+  .sort {
+    padding-right: 198px;
+    margin-top: 22px;
+  }
+  .btnMore {
+    margin-right: 50px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header{
+    width: 56rem;
+    margin-top: 15rem;
+  }
+  .product{
+    margin-left: 55px;
+
+  }
+  .container {
+    grid-template-columns: 300px 300px;
+    gap: 35px;
+  }
+  .sort{
+    padding-right: 63px;
+  }
+  .filter{
+    margin-top: 65px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mainContainer {
+    margin-left: -15px;
+  }
+  .header {
+    width: 85rem;
+    margin-top: 252px;
+  }
+  .filter {
+    display: flex;
+    flex-direction: column;
+    margin-left: 170px;
+  }
+  .filterForm {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 58px;
+  }
+  .container {
+    margin-top: 104px;
+    grid-template-columns: 300px 300px 300px 300px;
+    margin-left: -121px;
+  }
+  .sort {
+    padding-right: 380px;
+    margin-top: 92px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .container {
+    margin-top: 104px;
+    grid-template-columns: 300px 300px 300px;
+    margin-left: -121px;
+  }
+  .header{
+    width: 72rem;
+  }
+  .sort {
+    padding-right:200px;
+    margin-top: 92px;
+  }
+  .product{
+    margin-top: 105px;
+  }
 }

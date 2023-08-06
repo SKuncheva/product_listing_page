@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <>
-      <header >
+      <header className={style.headerContainer}>
         <div className={style.container}>
           <div className={style.containerBtn}>
             <button
@@ -55,7 +55,7 @@ export const Header = () => {
             <img src={img} alt="sneaker" className={style.imgHeader} />
           </div>
         </div>
-        {/* <Catalog gender={defaultGender} /> */}
+
       </header>
     </>
   );

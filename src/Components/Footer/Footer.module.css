@@ -17,3 +17,37 @@
     color: #ffff;
 }
 
+/* --------------------------respons---------------------- */
+@media screen and (max-width: 1440px) {
+    .container { 
+       width: 90%;
+       padding: 26px 81px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .elements{
+        width: 958px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .container{
+        width: 84rem;
+    }
+    .elements{
+        width: 928px;
+        margin-left: 176px;
+    }
+    .info{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media screen and (max-width: 320px) {
+    .elements {
+        width: 48rem;
+    }
+  .info{
+    margin-left: -44px;
+  }
+  }
