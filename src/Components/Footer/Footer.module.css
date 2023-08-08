@@ -3,11 +3,12 @@
     bottom:0;
     background-color: #4ba6eeb8;
     height: 40px;
+    margin-left: -105px;
 }
 .elements{
     height: 30px;
-    width: 1500px;
-    margin-left: 20px;
+    width: 99rem;
+    margin-left: 0px;
 }
 .info{
     display: flex;
@@ -25,13 +26,16 @@
     }
 }
 @media screen and (max-width: 1024px) {
-    .elements{
-        width: 958px;
+    .container{
+        width: 98rem;
+    }
+    .info{
+        margin-left: 5rem;
     }
 }
 @media screen and (max-width: 768px) {
     .container{
-        width: 84rem;
+        width: 92rem;
     }
     .elements{
         width: 928px;

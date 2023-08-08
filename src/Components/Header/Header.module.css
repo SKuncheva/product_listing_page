@@ -20,7 +20,7 @@
   top: 0px;
   left: 0px;
   z-index: -1;
-  width: 100%;
+  width: 99rem;
   height: 10vh;
   padding-top: 20%;
   padding-bottom: 5%;
@@ -108,13 +108,12 @@
     width: 92rem;
   }
   .container {
-
     padding: 23px 310px;
     margin: 0;
   }
   .elementsHeader {
     background-attachment: inherit;
-    width: 100%;
+
     height: 6vh;
   }
   .header {
@@ -135,7 +134,7 @@
 @media screen and (max-width: 1024px) {
   .headerContainer {
     width: 66rem;
-    margin-left: -15px;
+    margin-left: 245px;
   }
   .container {
     max-width: 50%;
@@ -144,6 +143,7 @@
   }
   .elementsHeader {
     background-attachment: inherit;
+    height: 10rem;
   }
   .containerBtn{
     margin-left: -286px;
@@ -167,10 +167,14 @@
     display: flex;
     align-items: flex-start;
   }
+ 
+  .text{
+    font-size: 35px;
+  }
   .elementsHeader {
     background-attachment: inherit;
     width: 92rem;
-    height: 16vh;
+    height: 15rem;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
@@ -212,10 +216,16 @@
   .elementsHeader {
     background-attachment: inherit;
     width:79rem;
-    height: 30vh;
+    height: 21rem;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+  }
+  .elText{
+    width: 500px;
+  }
+  .text{
+   font-size: 35px; 
   }
   .containerBtn {
     display: flex;
