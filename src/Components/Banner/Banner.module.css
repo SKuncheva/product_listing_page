@@ -1,0 +1,28 @@
+.background {
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: -1;
+  overflow: hidden;
+  max-height: 85vh;
+}
+.elements {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.paragraph {
+  font-size: 3rem;
+  color: #ffff;
+  font-size: bold;
+  text-shadow: 3px 1px #242323a8;
+  font-family: "Kaushan Script";
+}
+.image {
+  transform: rotate(-18deg);
+}

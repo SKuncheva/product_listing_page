@@ -1,19 +1,17 @@
-import { useState, useEffect ,useContext} from "react";
-import style from "./Catalog.module.css";
+import { useState, useEffect, useContext } from "react";
 import * as service from "../service/productService";
 import { filter_function, sort_function } from "./filterAndSort";
 import { GenderContext } from "../Context/Context";
-
+import style from "./Catalog.module.css";
 
 export const Catalog = () => {
   const [product, setProduct] = useState([]);
   const { gender } = useContext(GenderContext);
   const [showProduct, setShowProduct] = useState([]);
-  const [countProduct, setCountProduct] = useState(8);
+  const [countProduct, setCountProduct] = useState(6);
   const [range, setRange] = useState(200);
   const [getColor, setGetColor] = useState({ color: [] });
   const [showMessage, setShowMessage] = useState(false);
-
 
   useEffect(() => {
     service.getCategoryGender(gender).then((result) => {
@@ -29,7 +27,7 @@ export const Catalog = () => {
   };
 
   const btnLoadMore = () => {
-    setCountProduct(countProduct + 8);
+    setCountProduct(countProduct + 6);
   };
 
   const changeRange = (e) => {
@@ -57,63 +55,57 @@ export const Catalog = () => {
     setShowProduct(sort_function(showProduct, selected));
   };
   const seeMessage = () => {
-    setShowMessage(!showMessage)
+    setShowMessage(!showMessage);
   };
   return (
     <>
-      {/* <main className={style.mainContainer}> */}
+      <section className={style.headerElement}>
+        <h3>
+          <span className={style.headerTitle}>{gender}'s</span>{" "}
+        </h3>
+        <p>
+          Find {gender}'s athletic sneakers you can wear whether your focus for
+          the day is training or chilling
+        </p>
+      </section>
       <div className={style.mainContainer}>
-        <header className={style.header}>
-          <h3 className={style.headerTitle}>{gender}'s </h3>
-          <p className={style.headerTitleDescription}>
-            Find {gender}'s athletic sneakers you can wear whether your focus
-            for the day is training or chilling
-          </p>
-        </header>
         {/* ........................................Filter................................................. */}
         <aside className={style.filter}>
-          <form onSubmit={handleSubmit} className={style.filterForm}>
+          <form onSubmit={handleSubmit} style={{ padding: 15 }}>
             {/* ................Brand................... */}
             <div>
-              <label>
-                <h3 className={style.filterTitle}>Brand:</h3>
-                <select id="first" name="brand" className={style.brandSelect}>
-                  <option value="All" className={style.brandText}>
-                    All
-                  </option>
-                  <option value="Adidas" className={style.brandText}>
-                    Adidas
-                  </option>
-                  <option value="Kappa" className={style.brandText}>
-                    Kappa
-                  </option>
-                  <option value="Puma" className={style.brandText}>
-                    Puma
-                  </option>
-                  <option value="Nike" className={style.brandText}>
-                    Nike
-                  </option>
+              <label className={style.filterFlexDisplay}>
+                <span>Brand</span>
+                <select id="first" name="brand" className={style.brandOptions}>
+                  <option value="All">All</option>
+                  <option value="Adidas">Adidas</option>
+                  <option value="Kappa">Kappa</option>
+                  <option value="Puma">Puma</option>
+                  <option value="Nike">Nike</option>
                 </select>
               </label>
             </div>
 
             {/* ........................Price...................... */}
-            <div>
-              <h3 className={style.filterTitle}>Price:</h3>
-              <input
-                type="range"
-                onChange={changeRange}
-                min={0}
-                max={200}
-                step={5}
-                name="price"
-                value={range}
-              />
-              {range} $
+            <div className={style.filterFlexDisplay}>
+              <span>Price</span>
+              <div>
+                <input
+                  type="range"
+                  onChange={changeRange}
+                  min={0}
+                  max={200}
+                  step={5}
+                  name="price"
+                  value={range}
+                />
+                {range} $
+              </div>
             </div>
             {/* ..................Color................... */}
-            <div>
-              <h3 className={style.filterTitle}>Color:</h3>
+            <div className={style.filterFlexDisplay}>
+              <span>Color</span>
+
               <input
                 type="checkbox"
                 label="white"
@@ -121,7 +113,7 @@ export const Catalog = () => {
                 name="color"
                 onChange={handleColor}
               />
-              White
+              <span className={style.whiteCirkle}></span>
               <br />
               <input
                 type="checkbox"
@@ -130,7 +122,7 @@ export const Catalog = () => {
                 name="color"
                 onChange={handleColor}
               />
-              Black
+              <i className="fas fa-circle" style={{ color: "black" }}></i>
               <br />
               <input
                 type="checkbox"
@@ -139,7 +131,7 @@ export const Catalog = () => {
                 name="color"
                 onChange={handleColor}
               />
-              Blue
+              <i className="fas fa-circle" style={{ color: "lightBlue" }}></i>
               <br />
               <input
                 type="checkbox"
@@ -148,94 +140,146 @@ export const Catalog = () => {
                 name="color"
                 onChange={handleColor}
               />
-              Pink
+              <i className="fas fa-circle" style={{ color: "pink" }}></i>
             </div>
             <br />
-            <div className={style.btnSearch}>
-              <i className="fas fa-search"></i>
-              <input
-                type="submit"
-                value="Search"
-                className={style.btnSearchEl}
-              />
+            <div className={style.searchBtn}>
+              <i className="fas fa-search">
+                {" "}
+                <input
+                  className={style.searchBtnText}
+                  type="submit"
+                  value="Search"
+                />
+              </i>
             </div>
           </form>
         </aside>
 
         {/* .........................................Products................................... */}
         <section className={style.product}>
-          <article className={style.container}>
+          <article className={style.productContainer}>
             {showProduct &&
               showProduct.slice(0, countProduct).map((p) => (
-                <div key={p._id} className={style.productContainer}>
+                <div key={p._id} className={style.productCard}>
                   <div>
-                    <img src={p.imageUrl} alt={p.brand} className={style.img} />
+                    <img
+                      src={p.imageUrl}
+                      alt={p.brand}
+                      className={style.imgProduct}
+                    />
                   </div>
-                  <div>
-                    <ul className={style.stars}>
-                      <li className={style.starss}>
-                        <i className="fas fa-star"></i>
-                      </li>
-                      <li className={style.starss}>
-                        <i className="fas fa-star"></i>
-                      </li>
-                      <li className={style.starss}>
-                        <i className="fas fa-star"></i>
-                      </li>
-                      <li className={style.starss}>
-                        <i className="fas fa-star"></i>
-                      </li>
-                      <li className={style.starss}>
-                        <i className="fas fa-star"></i>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className={style.text}>
-                    <h4 className={style.nameBrand}>{p.brand}</h4>
-                    <p className={style.info}>
-                      color: {p.color}, size: {p.size}
+
+                  <div className={style.productInfo}>
+                    <span className={style.titleProduct}>{p.brand}</span>
+
+                    <p>
+                      {" "}
+                      {p.color && p.color === "white" ? (
+                        <i class="far fa-circle" style={{ fontSize: 29 }}></i>
+                      ) : (
+                        <i
+                          className="fas fa-circle"
+                          style={{
+                            backgroundColor:
+                              `${p.color}` === "blue"
+                                ? `light${p.color}`
+                                : `${p.color}`,
+                            borderRadius: "60%",
+                            fontSize: 29,
+                            border: 2,
+                            color: "transparent",
+                          }}
+                        ></i>
+                      )}
+                      <span style={{ color: "silver" }}>\</span>
+                      <span className={style.shoeSize}>
+                        <i className="fas fa-shoe-prints"></i>
+                        <span className={style.sizeNumber}>{p.size}</span>
+                      </span>
                     </p>
-                    <h6 className={style.price}>
-                      <span>$</span> {p.price},00{" "}
-                    </h6>
+                    <p style={{ fontSize: 16 }}>
+                      Modern, stylish and comfortable every day with {p.brand}
+                    </p>
+                    <div className="starsContainer">
+                      <ul className={style.stars}>
+                        <li className={style.starsColor}>
+                          <i className="fas fa-star"></i>
+                        </li>
+                        <li className={style.starsColor}>
+                          <i className="fas fa-star"></i>
+                        </li>
+                        <li className={style.starsColor}>
+                          <i className="fas fa-star"></i>
+                        </li>
+                        <li className={style.starsColor}>
+                          <i className="fas fa-star"></i>
+                        </li>
+                        <li className={style.starsColor}>
+                          <i className="fas fa-star"></i>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div className="buttonElement">
+
+                  <div>
                     <button
-                      className={style.buttonBuy}
                       onClick={() => seeMessage(showMessage)}
+                      className={style.btnBuy}
                     >
-                      Buy
+                      <span>$</span> {p.price},00
                     </button>
-                  </div>
-                  <div >
-                    {/* <div className={`element${message}`}> */}
-                    {showMessage ? (
-                      <div>
-                      <p className={style.btnShow}>The product has been added <span className={style.messageHide} onClick={() => seeMessage(showMessage)}>x</span></p>
-                    </div>) : null}
                   </div>
                 </div>
               ))}
+            {/* ............................................Message...................................... */}
+            <div className="message">
+              {showMessage ? (
+                <div className={style.message}>
+                  <span className={style.check}>
+                    <i className="fas fa-check"></i>
+                  </span>
+                  <p className={style.textMessage}>
+                    The product has been added
+                    <span
+                      onClick={() => seeMessage(showMessage)}
+                      className={style.closeMessage}
+                    >
+                      <i
+                        className="fas fa-times"
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                    </span>
+                  </p>
+                </div>
+              ) : null}
+            </div>
+          
+          </article>
+            {/* .......................................Button More................................................... */}
             {countProduct <= showProduct.length && (
-              <button onClick={btnLoadMore} className={style.btnMore}>
+              <button className={style.btnLoadMore} onClick={btnLoadMore}>
                 Load more
               </button>
             )}
-          </article>
-          <section className={style.button}></section>
         </section>
 
         {/* .....................Sort............................ */}
         <section className={style.sort}>
-          <h3 className={style.sortTitle}>
+          <h3 className={style.sortText}>
             <span>
               <i className="fas fa-filter"></i>
             </span>
-            sort by:
+            sort by
           </h3>
-          <div className={style.sortOptions}>
+          <div>
             <label>
-              <select name="sort" id="second" onChange={handleSort}>
+              <select
+                name="sort"
+                id="second"
+                onChange={handleSort}
+                style={{ fontSize: 17 }}
+              >
                 <option value=""></option>
                 <option value="desc">A-Z</option>
                 <option value="asc">Z-A</option>
@@ -245,7 +289,7 @@ export const Catalog = () => {
             </label>
           </div>
         </section>
-      {/* </main> */}
+        {/* </main> */}
       </div>
     </>
   );
